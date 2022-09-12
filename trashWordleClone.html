@@ -1,0 +1,398 @@
+<html>  
+    <head> 
+    <style>
+        input[type=text]{
+            font-size: large;
+            height: 50px;
+            border: none;
+            width: 50px;
+            border-bottom: 1px solid grey;
+            margin: 5px;
+        }
+
+        body{
+            background-color: darkslategrey;
+        }
+
+        /* #textStuff {
+            grid-column: 1;
+            grid-row: 1;
+        } */
+
+        /* #try4{
+            letter-spacing: 50px;
+        } */
+
+        #container{
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        /* .square{
+            height: 50px;
+            width: 50px;
+            background-color: grey;
+            margin: 5px;
+            opacity: 0.5;
+        }
+
+        .word{
+            display: flex;
+            flex-direction: row;
+            padding: 5px;
+            grid-row: 1;
+            grid-column: 1;
+        } */
+
+        #usedLetters{
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+        }
+
+        .useletter {
+            height: 30px;
+            width: 30px;
+            background-color: white;
+            margin: 1px;
+            padding: 1px;
+        }
+
+        #spacer{
+            height: 100px;
+        }
+
+    </style>
+    <script type = "text/javascript"> 
+
+    let word = ["h", "e", "l", "l", "o"];
+
+    function getWord(){
+        // const {readFileSync, promises: fsPromises} = require('fs');
+        // const contents = readFileSync('./words.txt', 'utf-8');
+        // const wordsArr = contents.split(/\r?\n/);
+
+        const wordsArr = ["winds", "crown", "hinds", "words", "sight", "place", "death"]
+
+        //random num in range
+        const randomIndex = Math.floor(Math.random() * wordsArr.length);
+        // get random item
+        const item = wordsArr[randomIndex];
+        // split
+        return item.split('');
+    }
+
+    // document.getElementById("try4").autofocus;
+    window.onload = function() {
+
+        for (let i = 2; i < 6; i++) {
+            for (let j = 1; j < 6; j++) {
+                let string = "try" + String(i) + "letter" + String(j);
+                document.getElementById(string).disabled = true;  
+            }
+        }
+
+
+        word = getWord();
+
+    }
+
+    function checkForUsedLetters(letter){
+        const alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+        for (let index = 0; index < alphabet.length; index++) {
+            if (alphabet[index] == letter) {
+                document.getElementById(alphabet[index]).style.backgroundColor = "brown";
+            }
+            
+        }
+    }
+
+    function myfunction() { 
+
+        let inputWord = [];
+
+        for (let index = 1; index < 6; index++) {
+            let string = "try1letter" + String(index);
+            let nextString = "try2letter" + String(index);
+            let letter = document.getElementById(string).value;
+            if(letter == word[index-1]){
+                document.getElementById(string).style.backgroundColor = "green";
+            } else if(word.includes(letter)){
+                document.getElementById(string).style.backgroundColor = "orange";
+            }
+
+            document.getElementById(string).disabled = true;
+            document.getElementById(string).style.color = "black"; 
+            document.getElementById(nextString).disabled = false; 
+            
+            inputWord.push(letter);
+
+            checkForUsedLetters(letter);
+
+        }
+
+        if (JSON.stringify(inputWord) == JSON.stringify(word)) {
+            alert("Correct!");
+        }
+
+    } 
+    
+    // second word
+
+    function myfunction2() {  
+
+        let inputWord = [];
+
+        for (let index = 1; index < 6; index++) {
+            let string = "try2letter" + String(index);
+            let nextString = "try3letter" + String(index);
+            let letter = document.getElementById(string).value;
+            if(letter == word[index-1]){
+                document.getElementById(string).style.backgroundColor = "green";
+            } else if(word.includes(letter)){
+                document.getElementById(string).style.backgroundColor = "orange";
+            }
+
+            document.getElementById(string).disabled = true;
+            document.getElementById(string).style.color = "black";
+            document.getElementById(nextString).disabled = false;  
+            
+            inputWord.push(letter);
+        }
+
+        if (JSON.stringify(inputWord) == JSON.stringify(word)) {
+            alert("Correct");
+        }
+
+    } 
+    
+    // third word
+
+    function myfunction3() {  
+
+        let inputWord = [];
+
+        for (let index = 1; index < 6; index++) {
+            let string = "try3letter" + String(index);
+            let nextString = "try4letter" + String(index);
+            let letter = document.getElementById(string).value;
+            if(letter == word[index-1]){
+                document.getElementById(string).style.backgroundColor = "green";
+            } else if(word.includes(letter)){
+                document.getElementById(string).style.backgroundColor = "orange";
+            }
+
+            document.getElementById(string).disabled = true;
+            document.getElementById(string).style.color = "black";
+            document.getElementById(nextString).disabled = false;   
+
+            inputWord.push(letter);
+        }
+
+        if (JSON.stringify(inputWord) == JSON.stringify(word)) {
+            alert("Correct");
+        }
+
+    } 
+
+    function myfunction4() {  
+
+        let inputWord = [];
+
+        for (let index = 1; index < 6; index++) {
+            let string = "try4letter" + String(index);
+            let nextString = "try5letter" + String(index);
+            let letter = document.getElementById(string).value;
+            if(letter == word[index-1]){
+                document.getElementById(string).style.backgroundColor = "green";
+            } else if(word.includes(letter)){
+                document.getElementById(string).style.backgroundColor = "orange";
+            }
+
+            document.getElementById(string).disabled = true;
+            document.getElementById(string).style.color = "black";
+            document.getElementById(nextString).disabled = false;   
+
+            inputWord.push(letter);
+        }
+
+        if (JSON.stringify(inputWord) == JSON.stringify(word)) {
+            alert("Correct");
+        }
+
+    } 
+
+    function myfunction5() {  
+
+        let inputWord = [];
+
+        for (let index = 1; index < 6; index++) {
+            let string = "try5letter" + String(index);
+            let letter = document.getElementById(string).value;
+            if(letter == word[index-1]){
+                document.getElementById(string).style.backgroundColor = "green";
+            } else if(word.includes(letter)){
+                document.getElementById(string).style.backgroundColor = "orange";
+            }
+
+            document.getElementById(string).disabled = true;
+            document.getElementById(string).style.color = "black";   
+
+            inputWord.push(letter);
+        }
+
+        if (JSON.stringify(inputWord) == JSON.stringify(word)) {
+            alert("Correct");
+        }
+
+    } 
+
+    function nextWord() {
+        for (let i = 1; i < 6; i++) {
+            for (let j = 1; j < 6; j++) {
+                let string = "try" + String(i) + "letter" + String(j);
+                document.getElementById(string).disabled = true; 
+                document.getElementById(string).value = ''; 
+                document.getElementById(string).style.backgroundColor = "white";
+            }
+        }
+
+        for (let i = 1; i < 6; i++){
+            let string = "try1letter" + String(i);
+            document.getElementById(string).disabled = false; 
+        }
+
+        word = getWord();
+    }
+
+    // function checkWord4() {
+    //     let inputWord = document.getElementById("try4").value;
+    //     let chars = inputWord.split('');
+
+    //     for (let index = 0; index < chars.length; index++) {
+    //         if (chars[index] == word[index]) {
+    //             document.getElementById("wordSquare11").style.backgroundColor = "green";
+    //         };
+            
+    //     }
+
+    // }
+
+
+    </script>  
+    </head>  
+    <body> 
+    <div id="container">
+        <h1>Try to guess the Word ... </h1>
+
+        <!-- trial for just one word -->
+        <!-- <div class="word">
+            <div class="square" id="wordSquare11"></div>
+            <div class="square" id="wordSquare12"></div>
+            <div class="square" id="wordSquare13"></div>
+            <div class="square" id="wordSquare14"></div>
+            <div class="square" id="wordSquare15"></div>
+        </div>
+        <div id="textStuff">
+            <input type="text" id="try4" maxlength="5">
+
+            <input type = "button" onclick = "checkWord4()" value = "check"> 
+        </div>  -->
+        
+
+        <!-- five letter input -->
+        <div>
+            <input type="text" id="try1letter1" maxlength="1" required>
+            <input type="text" id="try1letter2" maxlength="1" required>
+            <input type="text" id="try1letter3" maxlength="1" required>
+            <input type="text" id="try1letter4" maxlength="1" required>
+            <input type="text" id="try1letter5" maxlength="1" required>
+
+            <input type = "button" onclick = "myfunction()" value = "check">  
+        </div>
+        <br>
+
+        <!-- second five letter input -->
+        <div>
+            <input type="text" id="try2letter1" maxlength="1">
+            <input type="text" id="try2letter2" maxlength="1">
+            <input type="text" id="try2letter3" maxlength="1">
+            <input type="text" id="try2letter4" maxlength="1">
+            <input type="text" id="try2letter5" maxlength="1">
+
+            <input type = "button" onclick = "myfunction2()" value = "check">  
+        </div>
+        <br>
+
+        <!-- third five letter input -->
+        <div>
+            <input type="text" id="try3letter1" maxlength="1">
+            <input type="text" id="try3letter2" maxlength="1">
+            <input type="text" id="try3letter3" maxlength="1">
+            <input type="text" id="try3letter4" maxlength="1">
+            <input type="text" id="try3letter5" maxlength="1">
+
+            <input type = "button" onclick = "myfunction3()" value = "check"> 
+        </div>
+
+         <!-- fourth five letter input -->
+         <div>
+            <input type="text" id="try4letter1" maxlength="1">
+            <input type="text" id="try4letter2" maxlength="1">
+            <input type="text" id="try4letter3" maxlength="1">
+            <input type="text" id="try4letter4" maxlength="1">
+            <input type="text" id="try4letter5" maxlength="1">
+
+            <input type = "button" onclick = "myfunction4()" value = "check"> 
+        </div>
+
+         <!-- five five letter input -->
+         <div>
+            <input type="text" id="try5letter1" maxlength="1">
+            <input type="text" id="try5letter2" maxlength="1">
+            <input type="text" id="try5letter3" maxlength="1">
+            <input type="text" id="try5letter4" maxlength="1">
+            <input type="text" id="try5letter5" maxlength="1">
+
+            <input type = "button" onclick = "myfunction5()" value = "check"> 
+        </div>
+
+        <!-- try again -->
+        <input type="button" id="trAgain" onclick="nextWord()" value="Try Again!">
+
+        <div id="spacer"></div>
+
+        <div id="usedLetters">
+            <div class="useletter" id="a">a</div>
+            <div class="useletter" id="b">b</div>
+            <div class="useletter" id="c">c</div>
+            <div class="useletter" id="d">d</div>
+            <div class="useletter" id="e">e</div>
+            <div class="useletter" id="f">f</div>
+            <div class="useletter" id="g">g</div>
+            <div class="useletter" id="h">h</div>
+            <div class="useletter" id="i">i</div>
+            <div class="useletter" id="j">j</div>
+            <div class="useletter" id="k">k</div>
+            <div class="useletter" id="l">l</div>
+            <div class="useletter" id="m">m</div>
+            <div class="useletter" id="n">n</div>
+            <div class="useletter" id="o">o</div>
+            <div class="useletter" id="p">p</div>
+            <div class="useletter" id="q">q</div>
+            <div class="useletter" id="r">r</div>
+            <div class="useletter" id="s">s</div>
+            <div class="useletter" id="t">t</div>
+            <div class="useletter" id="u">u</div>
+            <div class="useletter" id="v">v</div>
+            <div class="useletter" id="w">w</div>
+            <div class="useletter" id="x">x</div>
+            <div class="useletter" id="y">y</div>
+            <div class="useletter" id="z">z</div>
+        </div>
+
+    </div>
+
+    </body>  
+    </html>  
